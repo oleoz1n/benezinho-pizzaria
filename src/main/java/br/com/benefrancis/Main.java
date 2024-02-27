@@ -23,6 +23,18 @@ public class Main {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory( db );
         EntityManager manager = factory.createEntityManager();
 
+      //  persistir(manager);
+
+
+        Pizzaria pizzaria = manager.find(Pizzaria.class, 1);
+
+        System.out.println(pizzaria);
+
+        manager.close();
+        factory.close();
+    }
+
+    private static void persistir(EntityManager manager) {
         var manjericao = new Sabor( null, "Manjericao", "Deliciosa pizza de manjericão que fora plantado pelos mais renomados agricultores do Brasil" );
         var frangoComCatupiri = new Sabor( null, "Frango com Catupiri", "O verdadeiro sabor do Catupiri Original faz toda a diferença nesta pizza" );
 
@@ -84,8 +96,5 @@ public class Main {
 
         System.out.println( "PIZZARIA: " + dominus );
         System.out.println( "PIZZARIA: " + nona );
-
-        manager.close();
-        factory.close();
     }
 }
