@@ -23,15 +23,19 @@ public class Main {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory( db );
         EntityManager manager = factory.createEntityManager();
 
-      //  persistir(manager);
 
+        Pizzaria pizzaria = getPizzaria(manager);
 
-        Pizzaria pizzaria = manager.find(Pizzaria.class, 1);
 
         System.out.println(pizzaria);
 
         manager.close();
         factory.close();
+    }
+
+    private static Pizzaria getPizzaria(EntityManager manager) {
+        Pizzaria pizzaria = manager.find(Pizzaria.class, 1);
+        return pizzaria;
     }
 
     private static void persistir(EntityManager manager) {
